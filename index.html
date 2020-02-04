@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="style.css">
     <title>My bread is beautiful</title>
 </head>
 <body>
@@ -11,27 +12,53 @@
         <header>
             <h1>My bread is beautiful</h1>
         </header>
-        <nav>
-            
+        <nav role="navigation">
+            <div id="menuToggle">
+              <input type="checkbox" />
+              <span></span>
+              <span></span>
+              <span></span>
+              <ul id="menu">
+                <li class="first">
+                    <p>
+                        La panification
+                    </p>
+                    <ul>
+                        <li class="second"><a href="#recette">La recette du pain</a></li class="second">
+                        <li class="second"><a href="#ingredients">Les ingrédients</a></li>
+                    </ul>
+                </li>
+                <li class="first">
+                    <p>
+                        Les étapes de la panification
+                    </p>
+                    <ul>
+                        <li class="second"><a href="#petrissage">Le pétrissage</a></li>
+                        <li class="second"><a href="#pointage">Le pointage</a></li>
+                        <li class="second"><a href="#pesage">Le pesage</a></li>
+                        <li class="second"><a href="#appret">L´apprêt</a></li>
+                        <li class="second"><a href="#enfournement">L´enfournement</a></li>
+                    </ul>
+              </ul>
+            </div>
         </nav>
         <section>   
             <article>
-                <img src='images/Photo by Nadine on Unsplash-min.jpg' alt='champ de blé par Nadine'>
-                <h2 id='panification'>
+                <h2>
                     La panification
                 </h2>
                 <p>
                     Il faut du temps pour faire du pain. C´est pour cette raison que le boulanger doit très tôt rejoindre son fournil, car le pain ne se fait pas en un seul tour de main, mais en plusieurs étapes successives. Il faut laisser à la pâte le temps de travailler. La levure doit agir progressivement sur tous les autres éléments. Elle se nourrit et se multiplie dans la pâte en provoquant des réactions qui la transforment. C´est ce qu´on appelle la fermentation. Un bon boulanger connaît bien le temps qu´il doit accorder à chaque étape de la panification : il respecte le " rythme du pain ".
                 </p>
                 
-                <h3>
+                <h3 id='recette'>
                     La recette du pain
                 </h3>
                 <p>
                     Comme toutes les bonnes choses qui se mangent, le pain a sa recette. Pour mériter le nom de pain, sans autre qualificatif, le produit fabriqué doit l´être dans des conditions très précises : le pain s´obtient après cuisson d´une pâte obtenue en pétrissant un mélange d´une farine de blé destinée à la panification et correspondant à un type officiellement défini d´eau potable, de sel de cuisine et d´un agent de fermentation. Le tout dans des proportions sur la base desquelles le boulanger peut jouer : 100 parties de farine; 50 à 55 d´eau (suivant le type de farine); 1,7 partie de sel;1 à 2 parties de levure (suivant la conduite de la fermentation).
                 </p>
                 
-                <h3>
+                <h3 id='ingredients'>
                     Les ingrédients
                 </h3>
                 <p>
@@ -53,21 +80,21 @@
                     Les étapes de la panification
                 </h2>
                 
-                <h3>
+                <h3 id="petrissage">
                     Le pétrissage
                 </h3>
                 <p>
                     Geste premier, fondamental, le pétrissage est le moment décisif où le boulanger mélange tous les éléments qui vont former la pâte. Il est réalisé par un pétrin mécanique qui permet le mélange des différents éléments pour obtenir une pâte homogène. Le gluten contenu dans la farine fixe l´eau versée dans le pétrin. La pâte devient élastique et emprisonne l´air.
                 </p>
                 
-                <h3>
+                <h3 id="pointage">
                     Le pointage ou première transformation
                 </h3>
                 <p>
                     Le pointage permet à la fermentation de se développer à l´intérieur de la pâte. A ce stade, la production de gaz carbonique commence. La pâte se met à lever. Elle devient plus tenace et plus élastique. C´est une étape très importante pour la formation des arômes. Le tour de main du boulanger lui permet de décider si la pâte est prête.
                 </p>
                 
-                <h3>
+                <h3 id="pesage">
                     Le pesage
                 </h3>
                 <p>
@@ -77,7 +104,7 @@
                     Le façonnage du pain (mise en forme) exige un tour de main tout spécial. La pâte doit être bien serrée sans la déchirer pour qu´elle conserve la forme souhaitée.
                 </p>
                 
-                <h3>
+                <h3 id="appret">
                     L´apprêt
                 </h3>
                 <p>
@@ -90,7 +117,7 @@
                     A ce stade en effet, si la farine est bonne et si la pâte est bien faite, chaque pâton atteint trois fois le volume qu´il avait au début.
                 </p>
                 
-                <h3>
+                <h3 id="enfournement">
                     L´enfournement et la cuisson
                 </h3>
                 <p>
@@ -100,7 +127,7 @@
                     La cuisson s´effectue dans un four chauffé à plus ou moins 250°C. La température de la pâte à l´enfournement est de plus ou moins 30°C. La durée de la cuisson varie suivant la forme et le poids des pâtons et la température du four. A titre indicatif, un pâton d´1 kg doit cuire environ 60 minutes.
                 </p>
                 
-                <h3>
+                <h3 id="defournement">
                     Le défournement et le ressuage
                 </h3>
                 <p>
@@ -119,5 +146,88 @@
             </p>
         </footer>
     </div>
+    <script>
+        //  offset solution by Ian Clark
+        //  https://stackoverflow.com/users/1773904/ian-clark
+        (function(document, history, location) {
+            var HISTORY_SUPPORT = !!(history && history.pushState);
+
+            var anchorScrolls = {
+                ANCHOR_REGEX: /^#[^ ]+$/,
+                OFFSET_HEIGHT_PX: 100,
+
+                /**
+                * Establish events, and fix initial scroll position if a hash is provided.
+                */
+                init: function() {
+                this.scrollToCurrent();
+                window.addEventListener('hashchange', this.scrollToCurrent.bind(this));
+                document.body.addEventListener('click', this.delegateAnchors.bind(this));
+                },
+
+                /**
+                * Return the offset amount to deduct from the normal scroll position.
+                * Modify as appropriate to allow for dynamic calculations
+                */
+                getFixedOffset: function() {
+                return this.OFFSET_HEIGHT_PX;
+                },
+
+                /**
+                * If the provided href is an anchor which resolves to an element on the
+                * page, scroll to it.
+                * @param  {String} href
+                * @return {Boolean} - Was the href an anchor.
+                */
+                scrollIfAnchor: function(href, pushToHistory) {
+                var match, rect, anchorOffset;
+
+                if(!this.ANCHOR_REGEX.test(href)) {
+                    return false;
+                }
+
+                match = document.getElementById(href.slice(1));
+
+                if(match) {
+                    rect = match.getBoundingClientRect();
+                    anchorOffset = window.pageYOffset + rect.top - this.getFixedOffset();
+                    window.scrollTo(window.pageXOffset, anchorOffset);
+
+                    // Add the state to history as-per normal anchor links
+                    if(HISTORY_SUPPORT && pushToHistory) {
+                    history.pushState({}, document.title, location.pathname + href);
+                    }
+                }
+
+                return !!match;
+                },
+
+                /**
+                * Attempt to scroll to the current location's hash.
+                */
+                scrollToCurrent: function() {
+                this.scrollIfAnchor(window.location.hash);
+                },
+
+                /**
+                * If the click event's target was an anchor, fix the scroll position.
+                */
+                delegateAnchors: function(e) {
+                var elem = e.target;
+
+                if(
+                    elem.nodeName === 'A' &&
+                    this.scrollIfAnchor(elem.getAttribute('href'), true)
+                ) {
+                    e.preventDefault();
+                }
+                }
+            };
+
+            window.addEventListener(
+                'DOMContentLoaded', anchorScrolls.init.bind(anchorScrolls)
+            );
+        })(window.document, window.history, window.location);
+    </script>
 </body>
 </html>
